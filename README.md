@@ -1,5 +1,7 @@
 # fultter_music
 
+实现音乐播放器的基本布局
+
 A new Flutter project.
 
 ## Getting Started
