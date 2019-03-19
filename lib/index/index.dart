@@ -31,7 +31,13 @@ class _IndexState extends State<Index> {
           ),
         ),
         body: new TabBarView(children: [new Home(), new Singer(), new Mark()]),
+
+        // new TabBarView(children: [new Home(), new Singer(), new Mark()]),
       ),
     );
+  }
+
+  void initState() {
+    super.initState();
   }
 }

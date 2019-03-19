@@ -18,7 +18,7 @@ class MusicList extends StatelessWidget {
         child: new Row(
           children: <Widget>[
             new Container(
-                margin: const EdgeInsets.all(10.0),
+                margin: const EdgeInsets.all(8.0),
                 width: MediaQuery.of(context).size.width / 5,
                 child: new AspectRatio(
                     aspectRatio: 1.0 / 1.0,
@@ -32,7 +32,7 @@ class MusicList extends StatelessWidget {
                       ),
                     ))),
             new Container(
-              padding: const EdgeInsets.only(left: 10.0),
+              padding: const EdgeInsets.only(left: 8.0),
               child: new Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -42,6 +42,8 @@ class MusicList extends StatelessWidget {
                       child: new Text(
                         list.dissname,
                         textAlign: TextAlign.left,
+                        overflow: TextOverflow.ellipsis,
+                        softWrap: false,
                         style:
                             new TextStyle(color: Colors.white, fontSize: 16.0),
                       ),
@@ -54,6 +56,8 @@ class MusicList extends StatelessWidget {
                         child: new Text(
                           list.dissname,
                           textAlign: TextAlign.left,
+                          overflow: TextOverflow.ellipsis,
+                          softWrap: false,
                           style: new TextStyle(color: GlobalConfig.fontColor),
                         ),
                       ))
@@ -70,9 +74,13 @@ class Home extends StatefulWidget {
   _HomePageState createState() => new _HomePageState();
 }
 
-class _HomePageState extends State<Home> {
+class _HomePageState extends State<Home> with AutomaticKeepAliveClientMixin {
   List images;
   List musicList;
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -105,7 +113,7 @@ class _HomePageState extends State<Home> {
     });
     try {
       Response response = await Dio().get(
-          'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg?g_tk=1928093487&inCharset=utf-8&outCharset=utf-8&notice=0&format=json&platform=yqq&hostUin=0&sin=0&ein=29&sortId=5&needNewCode=0&categoryId=10000000&rnd=0.9121797017929849',
+          'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg?g_tk=1928093487&inCharset=utf-8&outCharset=utf-8&notice=0&format=json&platform=yqq&hostUin=0&sin=0&ein=49&sortId=5&needNewCode=0&categoryId=10000000&rnd=0.9121797017929849',
           options: options);
       if (response.statusCode == 200) {
         List discList = json.decode(response.data)['data']['list'];
@@ -137,7 +145,8 @@ class _HomePageState extends State<Home> {
   // 循环歌单列表
   setList() {
     List<Widget> resultList = new List();
-    for (int i = 0; i < musicList.length; i++) {
+    final int musicLength = musicList != null ? musicList.length : 0;
+    for (int i = 0; i < musicLength; i++) {
       resultList.add(MusicList(musicList[i]));
     }
     return resultList;
