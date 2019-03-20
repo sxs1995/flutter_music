@@ -30,7 +30,8 @@ class _IndexState extends State<Index> {
             ],
           ),
         ),
-        body: new TabBarView(children: [new Home(), new Singer(), new Mark()]),
+        body: new TabBarView(
+            children: [new Home(), new CitySelectRoute(), new MarkLine()]),
 
         // new TabBarView(children: [new Home(), new Singer(), new Mark()]),
       ),

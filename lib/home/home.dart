@@ -40,7 +40,7 @@ class MusicList extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: new Container(
                       child: new Text(
-                        list.dissname,
+                        list.creator,
                         textAlign: TextAlign.left,
                         overflow: TextOverflow.ellipsis,
                         softWrap: false,
@@ -120,7 +120,6 @@ class _HomePageState extends State<Home> with AutomaticKeepAliveClientMixin {
         setState(() {
           musicList = discList.map((json) => ListData.fromJson(json)).toList();
         });
-        print(discList);
       } else {
         print("err code $response.statusCode");
       }
