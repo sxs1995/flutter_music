@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import '../home/config.dart';
-import 'package:dio/dio.dart';
 import 'dart:convert';
-import 'dart:io';
 import '../../service/service.dart';
 import '../../model/ranklist.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
