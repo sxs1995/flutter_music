@@ -12,7 +12,10 @@ class CitySelectRoute extends StatefulWidget {
   }
 }
 
-class _CitySelectRouteState extends State<CitySelectRoute> {
+class _CitySelectRouteState extends State<CitySelectRoute>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
   List<CityInfo> _cityList = List();
   List<CityInfo> _hotCityList = List();
 

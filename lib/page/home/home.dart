@@ -7,7 +7,10 @@ class Home extends StatefulWidget {
   _HomePageState createState() => new _HomePageState();
 }
 
-class _HomePageState extends State<Home> {
+class _HomePageState extends State<Home> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
   // 热门歌单推荐标题
   Widget titleCard() {
     return new Container(

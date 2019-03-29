@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../global_config.dart';
 import '../home/home.dart';
-import '../markLine/markline.dart';
+import '../rankList/markline.dart';
 import '../singer/singer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,6 +11,13 @@ class Index extends StatefulWidget {
 }
 
 class _IndexState extends State<Index> {
+  final List<Widget> tabBodies = [
+    new Home(),
+    new CitySelectRoute(),
+    new MarkLine(),
+  ];
+  int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
@@ -21,6 +28,11 @@ class _IndexState extends State<Index> {
           title: new Text('Music'),
           centerTitle: true,
           bottom: new TabBar(
+            onTap: (index) {
+              print(index);
+              currentIndex = index;
+              // tabBodies =
+            },
             labelColor:
                 GlobalConfig.dark == true ? new Color(0xFF63FDD9) : Colors.blue,
             unselectedLabelColor:
@@ -34,8 +46,6 @@ class _IndexState extends State<Index> {
         ),
         body: new TabBarView(
             children: [new Home(), new CitySelectRoute(), new MarkLine()]),
-
-        // new TabBarView(children: [new Home(), new Singer(), new Mark()]),
       ),
     );
   }
