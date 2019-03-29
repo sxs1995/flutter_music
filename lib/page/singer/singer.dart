@@ -12,14 +12,9 @@ class CitySelectRoute extends StatefulWidget {
   }
 }
 
-class _CitySelectRouteState extends State<CitySelectRoute>
-    with AutomaticKeepAliveClientMixin {
+class _CitySelectRouteState extends State<CitySelectRoute> {
   List<CityInfo> _cityList = List();
   List<CityInfo> _hotCityList = List();
-
-  @override
-  // TODO: implement wantKeepAlive
-  bool get wantKeepAlive => true;
 
   int _suspensionHeight = 40;
   int _itemHeight = 50;
@@ -91,7 +86,6 @@ class _CitySelectRouteState extends State<CitySelectRoute>
   }
 
   Widget _buildListItem(CityInfo model) {
-    print(model);
     String susTag = model.getSuspensionTag();
     susTag = (susTag == "★" ? "热门" : susTag);
     return Column(
@@ -140,7 +134,7 @@ class _CitySelectRouteState extends State<CitySelectRoute>
               isUseRealIndex: true,
               itemHeight: _itemHeight,
               suspensionHeight: _suspensionHeight,
-              onSusTagChanged: _onSusTagChanged,
+              // onSusTagChanged: _onSusTagChanged,
               //showCenterTip: false,
             )),
       ],

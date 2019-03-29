@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../global_config.dart';
+import '../../global_config.dart';
 import '../home/home.dart';
 import '../markLine/markline.dart';
 import '../singer/singer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Index extends StatefulWidget {
   @override
@@ -12,6 +13,7 @@ class Index extends StatefulWidget {
 class _IndexState extends State<Index> {
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
     return new DefaultTabController(
       length: 3,
       child: new Scaffold(
