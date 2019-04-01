@@ -15,9 +15,9 @@
 
 ### 插件
 
-1.flutter_screenutil: ^0.5.1 屏幕适配
-2.flutter_swiper: ^1.1.5 轮播
-3.azlistview: ^0.1.0 城市字母选择
+1.flutter_screenutil: ^0.5.1 屏幕适配  
+2.flutter_swiper: ^1.1.5 轮播  
+3.azlistview: ^0.1.0 城市字母选择  
 4.provide: ^1.0.2 #状态管理工具
 
 ## Getting Started
