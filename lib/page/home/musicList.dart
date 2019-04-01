@@ -85,22 +85,30 @@ class _MusicListWidgetState extends State<MusicListWidget> {
   }
 
   Widget _musicListWidgetWidget(data) {
-    return InkWell(
-      onTap: () {},
-      child: Container(
-        child: Row(
-          children: <Widget>[
-            _musicImage(data),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                _musicTitle(data),
-                _musicInfo(data),
-              ],
-            )
-          ],
+    if (data != null) {
+      return InkWell(
+        onTap: () {},
+        child: Container(
+          child: Row(
+            children: <Widget>[
+              _musicImage(data),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  _musicTitle(data),
+                  _musicInfo(data),
+                ],
+              )
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    } else {
+      return Container(
+        child: Center(
+          child: Text('加载中...'),
+        ),
+      );
+    }
   }
 }

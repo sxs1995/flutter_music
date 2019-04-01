@@ -9,11 +9,16 @@
 1.musicList.1.dart 中采用 Future 的方式
 2.musicList.dart 中采用创建数据模型的方式
 
+### 歌手页面
+
+利用 provide 状态管理和 azlistview 字母选择实现
+
 ### 插件
 
 1.flutter_screenutil: ^0.5.1 屏幕适配
 2.flutter_swiper: ^1.1.5 轮播
 3.azlistview: ^0.1.0 城市字母选择
+4.provide: ^1.0.2 #状态管理工具
 
 ## Getting Started
 

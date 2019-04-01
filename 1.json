@@ -1,24 +1,26 @@
 {
-  "data": {
-    "topList": [{
-      "id": 4,
-      "listenCount": 19200000,
-      "picUrl": "http://y.gtimg.cn/music/photo_new/T003R300x300M000002EKg2t4ERk7O.jpg",
-      "songList": [{
-          "singername": "A-Lin",
-          "songname": "有一种悲伤"
-        },
-        {
-          "singername": "吴青峰",
-          "songname": "花田错 (Live)"
-        },
-        {
-          "singername": "蔡徐坤",
-          "songname": "Bigger"
-        }
-      ],
-      "topTitle": "巅峰榜·流行指数",
-      "type": 0
-    }]
-  }
+  "list": [{
+    "index": 1,
+    "musicData": {
+      "albumdesc": "",
+      "albumid": 5724335,
+      "albummid": "0015rUVB2OUdGA",
+      "albumname": "怪咖",
+      "interval": 248,
+      "sizeflac": 23776095,
+      "sizeogg": 5415372,
+      "songid": 225584334,
+      "songmid": "000Qepff3UyUWO",
+      "songname": "天份",
+      "songorig": "天份",
+      "strMediaMid": "000Qepff3UyUWO",
+      "stream": 13,
+      "type": 0,
+      "vid": "a0029621gkf"
+    },
+    "playurl": ""
+  }],
+  "singer_id": "5062",
+  "singer_mid": "002J4UUk29y8BY",
+  "singer_name": "薛之谦"
 }

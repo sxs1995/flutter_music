@@ -28,6 +28,7 @@ dependencies:
     cupertino_icons: ^0.1.2
     flutter_swiper: ^1.1.5
     flutter_screenutil: ^0.5.1 #屏幕适配
+    provide: ^1.0.2 #状态管理工具
 dev_dependencies:
     flutter_test:
         sdk: flutter

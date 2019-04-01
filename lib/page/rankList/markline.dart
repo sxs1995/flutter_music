@@ -19,8 +19,8 @@ class _MarkLinePageState extends State<MarkLine>
     super.initState();
   }
 
-  void _getRankList() {
-    getrequest('getRankList').then((val) {
+  void _getRankList() async {
+    await getrequest('getRankList').then((val) {
       var data = json.decode(val.toString())['data'];
       RankList ranklists = RankList.fromJson(data);
       setState(() {
