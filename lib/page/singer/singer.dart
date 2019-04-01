@@ -125,10 +125,11 @@ class _CitySelectRouteState extends State<CitySelectRoute>
             onTap: () {
               print(model.name);
               Navigator.push(
-                  context,
-                  new MaterialPageRoute(
-                    builder: (context) => new MusicListDetail(),
-                  ));
+                context,
+                new MaterialPageRoute(
+                  builder: (context) => new MusicListDetail(),
+                ),
+              );
             },
             child: new Row(
               children: <Widget>[

@@ -32,9 +32,10 @@ class _MarkLinePageState extends State<MarkLine>
   @override
   Widget build(BuildContext context) {
     return new Container(
-      padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+      padding: EdgeInsets.only(top: 10.0, bottom: 15.0),
       child: new ListView.builder(
         itemCount: rankList.length,
+        shrinkWrap: true,
         itemBuilder: (BuildContext context, int index) {
           return ranklist(rankList[index]);
         },
@@ -56,7 +57,6 @@ class _MarkLinePageState extends State<MarkLine>
   Widget rankTitle(data, int index) {
     return Container(
       padding: EdgeInsets.fromLTRB(10.0, 5.0, 0, 5.0),
-      width: ScreenUtil().setWidth(475),
       child: Text(
         '${index} ${data.songname}-${data.singername}',
         overflow: TextOverflow.ellipsis,
@@ -72,18 +72,21 @@ class _MarkLinePageState extends State<MarkLine>
   // 图片歌单组合
   Widget ranklist(data) {
     return Container(
-      padding:
-          EdgeInsets.only(left: 20.0, bottom: 10.0, right: 20.0, top: 10.0),
+      padding: EdgeInsets.only(left: 20.0, bottom: 5.0, right: 20.0, top: 5.0),
       child: Row(
         children: <Widget>[
           rankImage(data),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              rankTitle(data.songList[0], 1),
-              rankTitle(data.songList[1], 2),
-              rankTitle(data.songList[2], 3),
-            ],
+          Expanded(
+            child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  rankTitle(data.songList[0], 1),
+                  rankTitle(data.songList[1], 2),
+                  rankTitle(data.songList[2], 3),
+                ],
+              ),
+            ),
           )
         ],
       ),

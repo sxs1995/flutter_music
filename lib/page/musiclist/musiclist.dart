@@ -88,7 +88,7 @@ class _MusicListDetailState extends State<MusicListDetail> {
             textAlign: TextAlign.left,
             style: TextStyle(
               decoration: TextDecoration.none,
-              fontSize: ScreenUtil().setSp(28),
+              fontSize: ScreenUtil().setSp(30),
               color: Colors.white,
             ),
           ),
@@ -96,7 +96,7 @@ class _MusicListDetailState extends State<MusicListDetail> {
             '${singerNews.singerName}·${songs.musicData.albumname}',
             style: TextStyle(
               decoration: TextDecoration.none,
-              fontSize: ScreenUtil().setSp(28),
+              fontSize: ScreenUtil().setSp(30),
               color: Color.fromRGBO(255, 255, 255, 0.3),
             ),
           )
