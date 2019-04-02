@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../service/service.dart';
-import '../../model/homepagemusicListModel.dart';
 
 class MusicListWidget extends StatefulWidget {
   final Widget child;

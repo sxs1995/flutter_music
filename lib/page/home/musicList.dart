@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../service/service.dart';
 import '../../model/homepagemusicListModel.dart';
+import '../../page/paly/paly.dart';
 
 class MusicListWidget extends StatefulWidget {
   final Widget child;
@@ -87,7 +88,14 @@ class _MusicListWidgetState extends State<MusicListWidget> {
   Widget _musicListWidgetWidget(data) {
     if (data != null) {
       return InkWell(
-        onTap: () {},
+        onTap: () {
+          var push = Navigator.push(
+            context,
+            new MaterialPageRoute(
+              builder: (context) => new PlayPage(),
+            ),
+          );
+        },
         child: Container(
           child: Row(
             children: <Widget>[

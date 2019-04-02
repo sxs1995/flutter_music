@@ -21,32 +21,77 @@ class _MusicListDetailState extends State<MusicListDetail> {
     // _getsongslist();
   }
 
+  // https://y.gtimg.cn/music/photo_new/T001R300x300M000003LaMHm42u7qS.jpg?max_age=2592000
+  // https://y.gtimg.cn/music/photo_new/T001R300x300M000.jpg?max_age=2592000
   @override
   Widget build(BuildContext context) {
     return Provide<SongsListProvide>(builder: (context, child, data) {
-      return SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: <Widget>[
-              musicImage(data),
-              musiclist(data.listsongs, data.singerName),
-            ],
+      if (data.singerId != '') {
+        return SingleChildScrollView(
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                musicImage(data.singerId),
+                musiclist(data.listsongs, data.singerName),
+              ],
+            ),
           ),
-        ),
-      );
+        );
+      } else {
+        return Container(
+          child: Center(
+            child: Text(
+              '加载中',
+              style: TextStyle(
+                color: Color.fromRGBO(0, 0, 0, 0),
+                decoration: TextDecoration.none,
+              ),
+            ),
+          ),
+        );
+      }
     });
   }
 
   Widget musicImage(data) {
     if (data != null) {
-      return Container(
-        height: ScreenUtil().setHeight(520),
-        width: ScreenUtil().setWidth(750),
-        child: Image.network(
-          'https://y.gtimg.cn/music/photo_new/T001R300x300M000${data.singerId}.jpg?max_age=2592000',
-          fit: BoxFit.fitWidth,
-          alignment: Alignment.topCenter,
-        ),
+      return Stack(
+        children: <Widget>[
+          Container(
+            height: ScreenUtil().setHeight(520),
+            width: ScreenUtil().setWidth(750),
+            child: Image.network(
+              'https://y.gtimg.cn/music/photo_new/T001R300x300M000' +
+                  data +
+                  '.jpg?max_age=2592000',
+              fit: BoxFit.fitWidth,
+              alignment: Alignment.topCenter,
+            ),
+          ),
+          Positioned(
+            //方法二
+            left: 188.5,
+            top: 30.0,
+            child: Text(
+              '薛之谦',
+              style: TextStyle(
+                decoration: TextDecoration.none,
+                fontSize: ScreenUtil().setSp(32),
+                color: Colors.white,
+              ),
+            ),
+          ),
+          Positioned(
+            //方法二
+            left: 15.0,
+            top: 23.0,
+            child: new Icon(
+              Icons.chevron_left,
+              size: 40,
+              color: Colors.black,
+            ),
+          ),
+        ],
       );
     } else {
       return Container(

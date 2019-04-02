@@ -9,9 +9,7 @@ import '../musiclist/musiclistDetail.dart';
 import 'package:provide/provide.dart';
 import '../../provide/singerlistprovide.dart';
 import '../../provide/songslistprovide.dart';
-import '../../service/service.dart';
 import '../../model/songslist.dart';
-import 'dart:convert';
 
 class CitySelectRoute extends StatefulWidget {
   @override
@@ -155,7 +153,6 @@ class _CitySelectRouteState extends State<CitySelectRoute>
     await getrequest('getSongslist', reqdata: reqdata).then((val) {
       var data = json.decode(val.toString())['data'];
       SongsListModel songslist = SongsListModel.fromJson(data);
-      print('>>>>>>>>${data}');
       Provide.value<SongsListProvide>(context).getlistsongs(
           songslist.list, songslist.singerMid, songslist.singerName);
     });

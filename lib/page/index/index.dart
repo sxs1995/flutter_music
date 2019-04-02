@@ -33,10 +33,8 @@ class _IndexState extends State<Index> {
               currentIndex = index;
               // tabBodies =
             },
-            labelColor:
-                GlobalConfig.dark == true ? new Color(0xFF63FDD9) : Colors.blue,
-            unselectedLabelColor:
-                GlobalConfig.dark == true ? Colors.white : Colors.black,
+            labelColor: Color(0xFF63FDD9),
+            unselectedLabelColor: Colors.white,
             tabs: [
               new Tab(text: "推荐"),
               new Tab(text: "歌手"),
