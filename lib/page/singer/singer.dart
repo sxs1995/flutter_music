@@ -5,9 +5,13 @@ import 'package:lpinyin/lpinyin.dart';
 import 'city_model.dart';
 import '../../model/singerModel.dart';
 import '../../service/service.dart';
-import '../musiclist/musiclist.dart';
+import '../musiclist/musiclistDetail.dart';
 import 'package:provide/provide.dart';
 import '../../provide/singerlistprovide.dart';
+import '../../provide/songslistprovide.dart';
+import '../../service/service.dart';
+import '../../model/songslist.dart';
+import 'dart:convert';
 
 class CitySelectRoute extends StatefulWidget {
   @override
@@ -123,13 +127,16 @@ class _CitySelectRouteState extends State<CitySelectRoute>
           height: _itemHeight.toDouble(),
           child: InkWell(
             onTap: () {
-              print(model.name);
+              print('${model.code}+${model.name}');
+              _getsongslist(model.code);
               Navigator.push(
                 context,
                 new MaterialPageRoute(
                   builder: (context) => new MusicListDetail(),
                 ),
               );
+              print(Provide.value<SongsListProvide>(context).singerName);
+              print(Provide.value<SongsListProvide>(context).singerId);
             },
             child: new Row(
               children: <Widget>[
@@ -141,6 +148,17 @@ class _CitySelectRouteState extends State<CitySelectRoute>
         )
       ],
     );
+  }
+
+  void _getsongslist(id) async {
+    var reqdata = {"singermid": id};
+    await getrequest('getSongslist', reqdata: reqdata).then((val) {
+      var data = json.decode(val.toString())['data'];
+      SongsListModel songslist = SongsListModel.fromJson(data);
+      print('>>>>>>>>${data}');
+      Provide.value<SongsListProvide>(context).getlistsongs(
+          songslist.list, songslist.singerMid, songslist.singerName);
+    });
   }
 
   @override

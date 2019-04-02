@@ -1,9 +1,8 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../service/service.dart';
-import '../../model/songslist.dart';
+import 'package:provide/provide.dart';
+import '../../provide/songslistprovide.dart';
 
 class MusicListDetail extends StatefulWidget {
   final Widget child;
@@ -15,39 +14,27 @@ class MusicListDetail extends StatefulWidget {
 
 class _MusicListDetailState extends State<MusicListDetail> {
   List songsLists = [];
-  SongsListModel singerNews;
 
   @override
   void initState() {
     super.initState();
-    _getsongslist();
-  }
-
-  void _getsongslist() async {
-    await getrequest('getSongslist').then((val) {
-      var data = json.decode(val.toString())['data'];
-      SongsListModel songslist = SongsListModel.fromJson(data);
-      print('>>>>>>>>${data}');
-      print(songslist.list[0].musicData.albumname);
-      setState(() {
-        songsLists = songslist.list;
-        singerNews = songslist;
-      });
-    });
+    // _getsongslist();
   }
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        child: Column(
-          children: <Widget>[
-            musicImage(singerNews),
-            musiclist(songsLists),
-          ],
+    return Provide<SongsListProvide>(builder: (context, child, data) {
+      return SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: <Widget>[
+              musicImage(data),
+              musiclist(data.listsongs, data.singerName),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   Widget musicImage(data) {
@@ -56,7 +43,7 @@ class _MusicListDetailState extends State<MusicListDetail> {
         height: ScreenUtil().setHeight(520),
         width: ScreenUtil().setWidth(750),
         child: Image.network(
-          'https://y.gtimg.cn/music/photo_new/T001R300x300M000${data.singerMid}.jpg?max_age=2592000',
+          'https://y.gtimg.cn/music/photo_new/T001R300x300M000${data.singerId}.jpg?max_age=2592000',
           fit: BoxFit.fitWidth,
           alignment: Alignment.topCenter,
         ),
@@ -76,7 +63,7 @@ class _MusicListDetailState extends State<MusicListDetail> {
     }
   }
 
-  Widget song(songs) {
+  Widget song(songs, name) {
     return Container(
       margin: EdgeInsets.only(bottom: 15.0),
       padding: EdgeInsets.only(left: 20.0),
@@ -88,15 +75,15 @@ class _MusicListDetailState extends State<MusicListDetail> {
             textAlign: TextAlign.left,
             style: TextStyle(
               decoration: TextDecoration.none,
-              fontSize: ScreenUtil().setSp(30),
-              color: Colors.white,
+              fontSize: ScreenUtil().setSp(28),
+              color: Colors.white70,
             ),
           ),
           Text(
-            '${singerNews.singerName}·${songs.musicData.albumname}',
+            '${name}·${songs.musicData.albumname}',
             style: TextStyle(
               decoration: TextDecoration.none,
-              fontSize: ScreenUtil().setSp(30),
+              fontSize: ScreenUtil().setSp(28),
               color: Color.fromRGBO(255, 255, 255, 0.3),
             ),
           )
@@ -105,13 +92,13 @@ class _MusicListDetailState extends State<MusicListDetail> {
     );
   }
 
-  Widget musiclist(songs) {
+  Widget musiclist(songs, name) {
     return ListView.builder(
       itemCount: songs.length,
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       itemBuilder: (BuildContext context, int index) {
-        return song(songs[index]);
+        return song(songs[index], name);
       },
     );
   }
