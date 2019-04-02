@@ -30,8 +30,9 @@ class _IndexState extends State<Index> {
           bottom: new TabBar(
             onTap: (index) {
               print(index);
-              currentIndex = index;
-              // tabBodies =
+              setState(() {
+                currentIndex = index;
+              });
             },
             labelColor: Color(0xFF63FDD9),
             unselectedLabelColor: Colors.white,
@@ -42,8 +43,9 @@ class _IndexState extends State<Index> {
             ],
           ),
         ),
-        body: new TabBarView(
-            children: [new Home(), new CitySelectRoute(), new MarkLine()]),
+        // body: new TabBarView(
+        //     children: [new Home(), new CitySelectRoute(), new MarkLine()]),
+        body: tabBodies[currentIndex],
       ),
     );
   }
